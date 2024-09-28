@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Artifacts(and RougeManager)/RelicLoader.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StateMachine/TP.gd" type="Script" id=2]
+[ext_resource path="res://StateMachine/Build.gd" type="Script" id=3]
+[ext_resource path="res://StateMachine/PlayerStateMachine.gd" type="Script" id=4]
+[ext_resource path="res://StateMachine/Move.gd" type="Script" id=5]
+
+[node name="PlayerStateMachine" type="Node"]
+script = ExtResource( 4 )
+initial_state_path = NodePath("Move")
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Build" type="Node" parent="."]
+script = ExtResource( 3 )
+position_difference = 150.0
+
+[node name="RelicLoader" parent="Build" instance=ExtResource( 1 )]
+relics_features = PoolStringArray( "RelicDisruptor" )
+
+[node name="Choosing" type="Node" parent="."]
+script = ExtResource( 2 )
+position_difference = 100.0

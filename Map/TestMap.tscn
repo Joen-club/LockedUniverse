@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Map/TestMapScript.gd" type="Script" id=1]
+[ext_resource path="res://Map/TestMapNode.tscn" type="PackedScene" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TestMapNode2" parent="." instance=ExtResource( 2 )]
+
+[node name="TestMapNode" parent="TestMapNode2" instance=ExtResource( 2 )]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 232.0
+margin_bottom = 104.0
+
+[node name="TestMapNode" parent="TestMapNode2/TestMapNode" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 104.0
+margin_bottom = 168.0
+
+[node name="TestMapNode2" parent="TestMapNode2/TestMapNode" instance=ExtResource( 2 )]
+margin_left = -64.0
+margin_top = 128.0
+margin_right = -24.0
+margin_bottom = 168.0
+
+[node name="TestMapNode" parent="TestMapNode2/TestMapNode/TestMapNode2" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 104.0
+margin_bottom = 168.0
+
+[node name="TextureRect" parent="TestMapNode2" instance=ExtResource( 2 )]
+margin_left = 576.0
+margin_top = 64.0
+margin_right = 616.0
+margin_bottom = 104.0
+
+[node name="TestMapNode" parent="TestMapNode2/TextureRect" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="TestMapNode" parent="TestMapNode2/TextureRect/TestMapNode" instance=ExtResource( 2 )]
+margin_left = -128.0
+margin_right = -88.0

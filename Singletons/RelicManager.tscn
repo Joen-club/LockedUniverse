@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Singletons/RelicManager.gd" type="Script" id=1]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicIndicators/Disruptor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicIndicators/DrawCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicIndicators/DebuffBonus.tscn" type="PackedScene" id=4]
+
+[node name="RelicManager" type="Node"]
+script = ExtResource( 1 )
+relic_references = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]

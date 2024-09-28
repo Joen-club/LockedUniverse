@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Singletons/CardManager.gd" type="Script" id=1]
+[ext_resource path="res://Singletons/Red.gd" type="Script" id=2]
+[ext_resource path="res://Singletons/Green.gd" type="Script" id=3]
+[ext_resource path="res://Singletons/Blue.gd" type="Script" id=4]
+[ext_resource path="res://Deck/All Cards/Damage/RightLeft.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Deck/All Cards/Damage/Claw.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Deck/All Cards/Damage/RightUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Deck/All Cards/Damage/BasicAttack.tscn" type="PackedScene" id=8]
+
+[node name="CardManager" type="Node"]
+script = ExtResource( 1 )
+character = "Red"
+
+[node name="Red" type="Node" parent="."]
+script = ExtResource( 2 )
+cards = [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ) ]
+
+[node name="Blue" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Green" type="Node" parent="."]
+script = ExtResource( 3 )
+cards = [ null ]
