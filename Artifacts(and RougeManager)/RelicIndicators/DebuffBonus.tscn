@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/RelicIndicators/E_and_debuff.png" type="Texture" id=1]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicIndicator.tscn" type="PackedScene" id=2]
+
+[node name="DebuffBonus" instance=ExtResource( 2 )]
+texture = ExtResource( 1 )
+relic_effect = "DebuffBonus"
+
+[node name="Label" parent="Panel" index="0"]
+text = "No cheb"

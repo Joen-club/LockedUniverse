@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Deck/All Cards/Red/RandomTP.gd" type="Script" id=1]
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=2]
+
+[node name="TeleportRandom" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+card_execution = null
+card_preview = null
+used_cells = [  ]
+
+[node name="Parameters" parent="." index="0"]
+default_params = {
+"[number_of_cells]": 5,
+"[required_energy]": 1,
+"[value]": 0
+}
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 0.909804, 0.164706, 0.772549, 1 )
+
+[node name="Description" parent="CardDescription/Panel" index="0"]
+bbcode_text = "Choose any of [number_of_cells] random cells to teleport"
+text = "Choose any of [number_of_cells] random cells to teleport"
+
+[editable path="CardDescription"]

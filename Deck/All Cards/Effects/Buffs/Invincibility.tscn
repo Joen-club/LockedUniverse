@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Deck/All Cards/Effects/Buffs/Invincibility.gd" type="Script" id=1]
+[ext_resource path="res://Tools/Debuff_Indicator.tscn" type="PackedScene" id=2]
+
+[node name="Invincibility" type="Node"]
+script = ExtResource( 1 )
+effect_name = "Invincibility"
+description = "Health can't be changed."
+indicator = ExtResource( 2 )
+indicator_image = "res://Assets/DebuffIndicators/Test.png"

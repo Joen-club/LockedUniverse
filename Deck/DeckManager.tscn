@@ -1,0 +1,261 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Deck/DiscardPile.gd" type="Script" id=1]
+[ext_resource path="res://Deck/DeckManager.gd" type="Script" id=2]
+[ext_resource path="res://Deck/Deck.gd" type="Script" id=3]
+[ext_resource path="res://UI/DeckIndicator3.gd" type="Script" id=4]
+[ext_resource path="res://Tools/CardManager.gd" type="Script" id=5]
+[ext_resource path="res://Deck/All Cards/AreaOn_t-cards.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Deck/All Cards/Damage/Claw.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Deck/All Cards/Red/TeleportRandom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/DiscardedCards.gd" type="Script" id=9]
+[ext_resource path="res://UI/PermaCards.gd" type="Script" id=10]
+[ext_resource path="res://UI/AllCards.gd" type="Script" id=11]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicLoader.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Deck/All Cards/EmptyCard.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/Control.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Deck/All Cards/ImmortalCard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Deck/All Cards/Attack+TP.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Deck/All Cards/PhantomCard.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Deck/All Cards/Damage/RightUp.tscn" type="PackedScene" id=18]
+
+[node name="DeckManager" type="Node2D" groups=["DeckManager"]]
+script = ExtResource( 2 )
+deck_path = NodePath("CanvasLayer/Deck")
+discard_pile_path = NodePath("DiscardPile")
+card_manager_path = NodePath("CardManager")
+
+[node name="CardManager" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="RelicLoader" parent="." instance=ExtResource( 12 )]
+relics_features = PoolStringArray( "DrawCard" )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 14 )]
+
+[node name="Map" type="Button" parent="CanvasLayer"]
+margin_left = 1235.0
+margin_top = 472.0
+margin_right = 1276.0
+margin_bottom = 492.0
+text = "MAP"
+
+[node name="Discarded_Panel" type="Button" parent="CanvasLayer"]
+margin_left = 1215.0
+margin_top = 495.0
+margin_right = 1275.0
+margin_bottom = 515.0
+text = "Discard"
+
+[node name="Perma_Button" type="Button" parent="CanvasLayer"]
+pause_mode = 2
+margin_left = 1227.0
+margin_top = 636.0
+margin_right = 1274.0
+margin_bottom = 656.0
+text = "Cards"
+
+[node name="All_cards" type="Button" parent="CanvasLayer"]
+pause_mode = 2
+margin_left = 1165.0
+margin_top = 636.0
+margin_right = 1212.0
+margin_bottom = 656.0
+text = "Cards"
+
+[node name="PermaCards" type="Panel" parent="CanvasLayer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.333333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="Control" type="Control" parent="CanvasLayer/PermaCards"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/PermaCards/Control"]
+pause_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 660.0
+margin_right = 47.0
+margin_bottom = 680.0
+text = "Close"
+
+[node name="AllCards" type="Panel" parent="CanvasLayer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.290196 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="Control" type="Control" parent="CanvasLayer/AllCards"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/AllCards/Control"]
+pause_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 597.0
+margin_right = 134.0
+margin_bottom = 680.0
+text = "Close"
+
+[node name="DiscardedCards" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+discard_pile_path = NodePath("../../DiscardPile")
+
+[node name="Control" type="Control" parent="CanvasLayer/DiscardedCards"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/DiscardedCards/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+margin_right = 12.0
+text = "Close"
+
+[node name="Deck" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 20000, 20000 )
+z_index = 300
+script = ExtResource( 3 )
+
+[node name="Claw" parent="CanvasLayer/Deck" instance=ExtResource( 7 )]
+process_priority = 0
+
+[node name="ImmortalCard" parent="CanvasLayer/Deck" instance=ExtResource( 15 )]
+
+[node name="Attack+TP" parent="CanvasLayer/Deck" instance=ExtResource( 16 )]
+process_priority = 0
+
+[node name="PhantomCard" parent="CanvasLayer/Deck" instance=ExtResource( 17 )]
+
+[node name="EmptyCard" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="AreaOn_t-cards" parent="CanvasLayer/Deck" instance=ExtResource( 6 )]
+
+[node name="EmptyCard2" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Claw2" parent="CanvasLayer/Deck" instance=ExtResource( 7 )]
+process_priority = 0
+
+[node name="TeleportRandom2" parent="CanvasLayer/Deck" instance=ExtResource( 8 )]
+process_priority = 0
+
+[node name="ImmortalCard2" parent="CanvasLayer/Deck" instance=ExtResource( 15 )]
+
+[node name="Attack+TP2" parent="CanvasLayer/Deck" instance=ExtResource( 16 )]
+process_priority = 0
+
+[node name="PhantomCard2" parent="CanvasLayer/Deck" instance=ExtResource( 17 )]
+
+[node name="EmptyCard3" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="AreaOn_t-cards2" parent="CanvasLayer/Deck" instance=ExtResource( 6 )]
+
+[node name="EmptyCard4" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Claw3" parent="CanvasLayer/Deck" instance=ExtResource( 7 )]
+process_priority = 0
+
+[node name="ImmortalCard3" parent="CanvasLayer/Deck" instance=ExtResource( 15 )]
+
+[node name="PhantomCard3" parent="CanvasLayer/Deck" instance=ExtResource( 17 )]
+
+[node name="EmptyCard5" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="AreaOn_t-cards3" parent="CanvasLayer/Deck" instance=ExtResource( 6 )]
+
+[node name="EmptyCard6" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Claw4" parent="CanvasLayer/Deck" instance=ExtResource( 7 )]
+process_priority = 0
+
+[node name="ImmortalCard4" parent="CanvasLayer/Deck" instance=ExtResource( 15 )]
+
+[node name="PhantomCard4" parent="CanvasLayer/Deck" instance=ExtResource( 17 )]
+
+[node name="EmptyCard7" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="AreaOn_t-cards4" parent="CanvasLayer/Deck" instance=ExtResource( 6 )]
+
+[node name="EmptyCard8" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Claw5" parent="CanvasLayer/Deck" instance=ExtResource( 7 )]
+process_priority = 0
+
+[node name="ImmortalCard5" parent="CanvasLayer/Deck" instance=ExtResource( 15 )]
+
+[node name="PhantomCard5" parent="CanvasLayer/Deck" instance=ExtResource( 17 )]
+
+[node name="EmptyCard9" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="AreaOn_t-cards5" parent="CanvasLayer/Deck" instance=ExtResource( 6 )]
+
+[node name="EmptyCard10" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="TeleportRandom" parent="CanvasLayer/Deck" instance=ExtResource( 8 )]
+process_priority = 0
+
+[node name="EmptyCard12" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="EmptyCard11" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Attack+TP4" parent="CanvasLayer/Deck" instance=ExtResource( 16 )]
+process_priority = 0
+
+[node name="EmptyCard13" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="TeleportRandom5" parent="CanvasLayer/Deck" instance=ExtResource( 8 )]
+process_priority = 0
+
+[node name="Attack+TP5" parent="CanvasLayer/Deck" instance=ExtResource( 16 )]
+process_priority = 0
+
+[node name="EmptyCard14" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="EmptyCard15" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="EmptyCard16" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="TeleportRandom4" parent="CanvasLayer/Deck" instance=ExtResource( 8 )]
+process_priority = 0
+
+[node name="EmptyCard17" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="Attack+TP3" parent="CanvasLayer/Deck" instance=ExtResource( 16 )]
+process_priority = 0
+
+[node name="EmptyCard18" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="EmptyCard19" parent="CanvasLayer/Deck" instance=ExtResource( 13 )]
+
+[node name="TeleportRandom3" parent="CanvasLayer/Deck" instance=ExtResource( 8 )]
+process_priority = 0
+
+[node name="RightUp" parent="CanvasLayer/Deck" instance=ExtResource( 18 )]
+
+[node name="DiscardPile" type="Node2D" parent="."]
+position = Vector2( 20000, 231 )
+script = ExtResource( 1 )
+
+[connection signal="return_hand_cards" from="CanvasLayer" to="." method="return_cards_in_hand"]
+[connection signal="pressed" from="CanvasLayer/Map" to="CanvasLayer" method="_on_Map_pressed"]
+[connection signal="pressed" from="CanvasLayer/Discarded_Panel" to="CanvasLayer" method="choose_panel" binds= [ "discarded_panel" ]]
+[connection signal="pressed" from="CanvasLayer/Perma_Button" to="CanvasLayer" method="choose_panel" binds= [ "perma_panel" ]]
+[connection signal="pressed" from="CanvasLayer/All_cards" to="CanvasLayer" method="choose_panel" binds= [ "All_panel" ]]
+[connection signal="pressed" from="CanvasLayer/PermaCards/Control/Button" to="CanvasLayer" method="choose_panel" binds= [ "perma_panel" ]]
+[connection signal="pressed" from="CanvasLayer/AllCards/Control/Button" to="CanvasLayer" method="choose_panel" binds= [ "All_panel" ]]
+[connection signal="pressed" from="CanvasLayer/DiscardedCards/Control/Button" to="CanvasLayer" method="choose_panel" binds= [ "discarded_panel" ]]

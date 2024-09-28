@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cards/CardTemplate.gd" type="Script" id=2]
+[ext_resource path="res://Cards/Blueprint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tools/Preview.tscn" type="PackedScene" id=5]
+
+[node name="BasicCard" instance=ExtResource( 4 )]
+script = ExtResource( 2 )
+blueprint_path = NodePath("Blueprint")
+
+[node name="Parameters" parent="." index="0"]
+default_params = {
+"[Invincibility]": {
+"Invincibility": "lolKek"
+},
+"[required_energy]": 1,
+"[value]": 0
+}
+
+[node name="Blueprint" parent="." index="6" instance=ExtResource( 3 )]
+card_preview = ExtResource( 5 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+
+[editable path="CardDescription"]
+[editable path="Blueprint"]

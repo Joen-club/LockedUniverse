@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cards/Effect.gd" type="Script" id=1]
+[ext_resource path="res://Deck/All Cards/Effects/EffectCard.gd" type="Script" id=2]
+[ext_resource path="res://Cards/BasicCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/Debuffs/Confusion.tscn" type="PackedScene" id=4]
+
+[node name="EffectCard" instance=ExtResource( 3 )]
+script = ExtResource( 2 )
+value_and_effect = false
+effect_type_path = [  ]
+
+[node name="CardDescription" parent="." index="5"]
+margin_left = 12.0
+margin_right = 137.0
+
+[node name="Effect" type="Node" parent="." index="7"]
+script = ExtResource( 1 )
+current_effect = ExtResource( 4 )
+effect_duration = 3
+
+[node name="GridContainer" parent="." index="11"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 231.0
+margin_bottom = 162.0
+custom_constants/hseparation = 38
+columns = 5
+
+[editable path="CardDescription"]
+[editable path="Blueprint"]

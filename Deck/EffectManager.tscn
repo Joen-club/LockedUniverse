@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EffectManager.gd" type="Script" id=1]
+[ext_resource path="res://Cards/Features/Exhaust.gd" type="Script" id=2]
+
+[node name="EffectManager" type="Node2D"]
+script = ExtResource( 1 )
+entity_effects = {
+"Cursed": false,
+"Invincible": false
+}
+
+[node name="EntityEffects" type="Node2D" parent="."]
+
+[node name="CardFeatures" type="Node2D" parent="."]
+
+[node name="Exhaust" type="Node" parent="CardFeatures"]
+script = ExtResource( 2 )
+
+[node name="CardEffects" type="Node2D" parent="."]

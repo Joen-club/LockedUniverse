@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
+
+[node name="EmptyCard" groups=["t-cards"] instance=ExtResource( 1 )]
+modulate = Color( 0.917647, 0.0901961, 0.0901961, 1 )
+__meta__ = {
+"_editor_description_": "Choose exhausted in the additional features if you want"
+}
+card_execution = null
+
+[node name="AditionalFeatures" parent="." index="7"]
+descriptions = {
+}
+
+[editable path="CardDescription"]

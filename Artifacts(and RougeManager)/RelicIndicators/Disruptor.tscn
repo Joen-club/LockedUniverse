@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Artifacts(and RougeManager)/RelicIndicator.tscn" type="PackedScene" id=2]
+
+[node name="Disruptor" instance=ExtResource( 2 )]
+margin_right = 21.0
+margin_bottom = 21.0
+relic_effect = "RelicDisruptor"

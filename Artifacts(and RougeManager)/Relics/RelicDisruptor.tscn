@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Artifacts(and RougeManager)/Relics/RelicDisruptor.gd" type="Script" id=1]
+
+[node name="RelicDisruptor" type="Node"]
+script = ExtResource( 1 )
+relic_capacity = 3

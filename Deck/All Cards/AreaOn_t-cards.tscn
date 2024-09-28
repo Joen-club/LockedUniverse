@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cards/BasicCard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Deck/All Cards/Area_on_t-cards.gd" type="Script" id=2]
+
+[node name="AreaOn_t-cards" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+activate_cells = PoolVector2Array( 1, 0, -1, 0, 0, 1, 0, -1, 2, 0, -2, 0, 0, 2, 0, -2, 3, 0, -3, 0, 0, 3, 0, -3, 2, -2, -2, 2, -2, -2, 2, 2 )
+
+[node name="Parameters" parent="." index="0"]
+default_params = {
+"[Invincibility]": {
+"Invincibility": "lolKek"
+},
+"[required_energy]": 1,
+"[value]": -38
+}
+
+[node name="Description" parent="CardDescription/Panel" index="0"]
+bbcode_text = "The area of the card depends on the amount of t-cards in your deck"
+text = "The area of the card depends on the amount of t-cards in your deck"
+
+[node name="AditionalFeatures" parent="." index="8"]
+feature_description = {
+}
+
+[editable path="CardDescription"]
+[editable path="Blueprint"]

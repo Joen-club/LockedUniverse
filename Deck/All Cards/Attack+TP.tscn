@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Deck/All Cards/Attack+TP.gd" type="Script" id=1]
+[ext_resource path="res://Cards/BasicCard.tscn" type="PackedScene" id=2]
+
+[node name="Attack+TP" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+activate_cells = PoolVector2Array( 1, 0, -1, 0, 0, 1, 0, -1, 1, 1, -1, -1, 1, -1, -1, 1 )
+
+[node name="Parameters" parent="." index="0"]
+default_params = {
+"[required_energy]": 1,
+"[value]": -100
+}
+
+[node name="Description" parent="CardDescription/Panel" index="0"]
+bbcode_text = "Each entity who's being hit gets teleported at a random position"
+text = "Each entity who's being hit gets teleported at a random position"
+
+[node name="AditionalFeatures" parent="." index="8"]
+feature_description = {
+}
+
+[editable path="CardDescription"]
+[editable path="Blueprint"]

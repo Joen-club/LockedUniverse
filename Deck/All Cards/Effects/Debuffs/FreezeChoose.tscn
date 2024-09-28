@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cards/Effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/Debuffs/Frozen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Deck/All Cards/Effects/Debuffs/FreezeChoose.gd" type="Script" id=3]
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=4]
+
+[node name="FreezeChoose" instance=ExtResource( 4 )]
+script = ExtResource( 3 )
+card_execution = null
+
+[node name="Effect" parent="." index="5" instance=ExtResource( 1 )]
+current_effect = ExtResource( 2 )
+
+[editable path="CardDescription"]
