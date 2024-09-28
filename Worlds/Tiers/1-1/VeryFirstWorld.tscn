@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/Enemies/EnemyScenes/FirstEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Worlds/WorldTemplate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Effects/Debuffs/CursedHands.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/EnemyScenes/Blocker.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemies/EnemiesAdditionalActions/AdditEffect.gd" type="Script" id=5]
+
+[node name="VeryFirstWorld" instance=ExtResource( 2 )]
+__meta__ = {
+"_editor_description_": "1-1"
+}
+player_position = Vector2( 1, 2 )
+
+[node name="Grid" parent="." index="0"]
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 7, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0 )
+cell_spawn_rate = 9999
+
+[node name="FirstEnemy" parent="Enemies" index="0" instance=ExtResource( 1 )]
+position = Vector2( 448, 0 )
+max_health = 70.0
+
+[node name="AdditionalState" parent="Enemies/FirstEnemy/EnemyState" index="0"]
+script = ExtResource( 5 )
+count_capacity = 1
+additional_effect_path = NodePath("Effect")
+gain_energy = false
+
+[node name="Effect" parent="Enemies/FirstEnemy/EnemyState/AdditionalState" index="0"]
+current_effect = ExtResource( 3 )
+
+[node name="Blocker" parent="Enemies" index="1" instance=ExtResource( 4 )]
+position = Vector2( 128, 64 )
+max_health = 200.0
+
+[editable path="Grid"]
+[editable path="Enemies/FirstEnemy"]
+[editable path="Enemies/FirstEnemy/EnemyState"]

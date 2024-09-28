@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Tools/Debuff_Indicator.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Tools/DescriptionPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 4 )
+
+[node name="Debuff_Indicator" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 128.0
+margin_bottom = 112.0
+script = ExtResource( 1 )
+description_panel = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = -13.0
+margin_top = 5.0
+margin_right = 16.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+text = "2"
+align = 1
+valign = 1
+
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="." method="_on_TextureRect_mouse_exited"]

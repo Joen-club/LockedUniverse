@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tools/IsInverse.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tools/CardToolManager.gd" type="Script" id=2]
+[ext_resource path="res://Tools/ChargeTools/Chargeable.tscn" type="PackedScene" id=3]
+
+[node name="CardToolManager" type="Node"]
+script = ExtResource( 2 )
+features = {
+"chargeable": false,
+"inverse": false
+}
+feature_description = {
+"chargeable": "charges the card",
+"inverse": "inverses the area of attack"
+}
+tool_instances = {
+"chargeable": ExtResource( 3 ),
+"inverse": ExtResource( 1 )
+}
+chargeable_options = {
+"ExtendArea": false
+}

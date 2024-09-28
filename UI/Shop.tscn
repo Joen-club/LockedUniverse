@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Shop.gd" type="Script" id=1]
+
+[node name="Shop" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0980392, 0.0941176, 0.0941176, 1 )
+
+[node name="RelicGrid" type="GridContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 462.0
+margin_top = -195.0
+margin_right = 525.0
+margin_bottom = -131.0
+mouse_filter = 2
+custom_constants/hseparation = 10
+columns = 3
+
+[node name="CardGrid" type="GridContainer" parent="."]
+margin_left = 231.0
+margin_top = 84.0
+margin_right = 987.0
+margin_bottom = 462.0
+mouse_filter = 2
+custom_constants/hseparation = 200
+columns = 3
+
+[node name="Leave" type="Button" parent="."]
+margin_left = 1211.0
+margin_top = 3.0
+margin_right = 1277.0
+margin_bottom = 30.0
+text = "Leave"
+
+[connection signal="pressed" from="Leave" to="." method="_on_Leave_pressed"]

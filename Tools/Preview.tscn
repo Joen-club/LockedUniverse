@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Grid/CardGrid.png" type="Texture" id=1]
+
+[node name="CardPreview" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.560784 )
+z_index = 1
+texture = ExtResource( 1 )
+offset = Vector2( 32, 32 )

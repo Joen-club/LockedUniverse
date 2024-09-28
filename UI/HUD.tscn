@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Artifacts(and RougeManager)/RougeManager.tscn" type="PackedScene" id=2]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+player_state_tracker_path = NodePath("Control/player_state_tracker")
+
+[node name="RelicContainer" type="GridContainer" parent="."]
+margin_left = 21.0
+margin_top = 21.0
+margin_right = 341.0
+margin_bottom = 149.0
+mouse_filter = 2
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 10
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="player_state_tracker" type="Label" parent="Control"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="RougeManager" parent="." instance=ExtResource( 2 )]
+
+[editable path="RougeManager"]
+[editable path="RougeManager/DeckManager"]

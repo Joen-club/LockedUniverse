@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Tools/Chargeable.gd" type="Script" id=1]
+
+[node name="Chargeable" type="Node"]
+script = ExtResource( 1 )
+charge_features = {
+"ExtendArea": "res://Tools/ChargeTools/ExtendActivateCells.gd"
+}
+
+[node name="Feature" type="Node" parent="."]

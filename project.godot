@@ -1,0 +1,185 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AdditionalState",
+"language": "GDScript",
+"path": "res://Entities/Enemies/EnemiesAdditionalActions/AdditionalState.gd"
+}, {
+"base": "Card",
+"class": "BasicCard",
+"language": "GDScript",
+"path": "res://Cards/CardTemplate.gd"
+}, {
+"base": "Node2D",
+"class": "Card",
+"language": "GDScript",
+"path": "res://Cards/Card.gd"
+}, {
+"base": "Node",
+"class": "CardManagerClass",
+"language": "GDScript",
+"path": "res://Singletons/CardManagerClass.gd"
+}, {
+"base": "Panel",
+"class": "CardsGrid",
+"language": "GDScript",
+"path": "res://UI/CardsGrid.gd"
+}, {
+"base": "Card",
+"class": "ChooseCellCard",
+"language": "GDScript",
+"path": "res://Cards/ChooseCellCard.gd"
+}, {
+"base": "BasicCard",
+"class": "EffectCard",
+"language": "GDScript",
+"path": "res://Deck/All Cards/Effects/EffectCard.gd"
+}, {
+"base": "Node",
+"class": "EffectClass",
+"language": "GDScript",
+"path": "res://Effects/EffectClass.gd"
+}, {
+"base": "Node",
+"class": "EnemyState",
+"language": "GDScript",
+"path": "res://Entities/Enemies/EnemyState.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entities/Entity.gd"
+}, {
+"base": "Area2D",
+"class": "Execution",
+"language": "GDScript",
+"path": "res://Tools/Execution.gd"
+}, {
+"base": "Node",
+"class": "FeatureTool",
+"language": "GDScript",
+"path": "res://Tools/Feature&Tools.gd"
+}, {
+"base": "TileMap",
+"class": "ForAstar",
+"language": "GDScript",
+"path": "res://Grid/ForAstar.gd"
+}, {
+"base": "ForAstar",
+"class": "Pathfinding",
+"language": "GDScript",
+"path": "res://Grid/Grid.gd"
+}, {
+"base": "Node",
+"class": "RelicClass",
+"language": "GDScript",
+"path": "res://Artifacts(and RougeManager)/Relics/RelicClass.gd"
+}, {
+"base": "Entity",
+"class": "SimpleEnemy",
+"language": "GDScript",
+"path": "res://Entities/SimpleEnemy.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://StateMachine/BaseSM.gd"
+} ]
+_global_script_class_icons={
+"AdditionalState": "",
+"BasicCard": "",
+"Card": "",
+"CardManagerClass": "",
+"CardsGrid": "",
+"ChooseCellCard": "",
+"EffectCard": "",
+"EffectClass": "",
+"EnemyState": "",
+"Entity": "",
+"Execution": "",
+"FeatureTool": "",
+"ForAstar": "",
+"Pathfinding": "",
+"RelicClass": "",
+"SimpleEnemy": "",
+"State": "",
+"StateMachine": ""
+}
+
+[application]
+
+config/name="IHateYOU"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GameManager="*res://Singletons/GameManager.gd"
+CardManager="*res://Singletons/CardManager.tscn"
+RelicManager="*res://Singletons/RelicManager.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+Left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+Right_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+Test={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+EnemyPreview={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+CardsBlueprients={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
