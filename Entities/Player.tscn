@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Entities/Player.gd" type="Script" id=1]
+[ext_resource path="res://StateMachine/PlayerStateMachine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Entity/EntityTest.png" type="Texture" id=3]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Highlight.gd" type="Script" id=5]
+[ext_resource path="res://Artifacts(and RougeManager)/RelicLoader.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemies/NeighbourDetecter.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22, 23 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28, 28 )
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+scale = Vector2( 0.5, 0.5 )
+collision_mask = 0
+script = ExtResource( 1 )
+max_health = 100.0
+turns_remain = 4
+turns_capacity = 4
+this_state_machine_path = NodePath("PlayerStateMachine")
+highlight_path = NodePath("Highlight")
+HUD_path = NodePath("HUD")
+deck_manager_path = NodePath("HUD/RougeManager/DeckManager")
+rouge_manager_path = NodePath("HUD/RougeManager")
+
+[node name="RelicLoader" parent="." instance=ExtResource( 7 )]
+relics_features = PoolStringArray( "DebuffBonus" )
+
+[node name="Highlight" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 65, 69 )
+shape = SubResource( 1 )
+
+[node name="PlayerStateMachine" parent="." instance=ExtResource( 2 )]
+state_owner_path = NodePath("..")
+
+[node name="RelicLoader" parent="PlayerStateMachine/Build" index="0"]
+__meta__ = {
+"_editor_description_": "Do I need this thing here anyway?"
+}
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" parent="HUD/RougeManager/DeckManager" index="2"]
+pause_mode = 0
+
+[node name="Discarded_Panel" parent="HUD/RougeManager/DeckManager/CanvasLayer" index="2"]
+pause_mode = 2
+
+[node name="Button" parent="HUD/RougeManager/DeckManager/CanvasLayer/DiscardedCards/Control" index="0"]
+pause_mode = 2
+
+[node name="NeighbourDetecter" type="Area2D" parent="."]
+position = Vector2( 64, 68 )
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighbourDetecter"]
+shape = SubResource( 2 )
+
+[node name="DebuffContainer" type="GridContainer" parent="."]
+margin_right = 12.0
+margin_bottom = 48.0
+rect_scale = Vector2( 2, 2 )
+
+[connection signal="body_entered" from="NeighbourDetecter" to="NeighbourDetecter" method="_on_NeighbourDetecter_body_entered"]
+[connection signal="body_exited" from="NeighbourDetecter" to="NeighbourDetecter" method="_on_NeighbourDetecter_body_exited"]
+
+[editable path="PlayerStateMachine"]
+[editable path="HUD"]
+[editable path="HUD/RougeManager"]
+[editable path="HUD/RougeManager/DeckManager"]

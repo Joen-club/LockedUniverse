@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/Debuffs/Corrosion.gd" type="Script" id=1]
+[ext_resource path="res://Tools/Debuff_Indicator.tscn" type="PackedScene" id=2]
+
+[node name="Corrosion" type="Node"]
+script = ExtResource( 1 )
+effect_name = "Corrosion"
+description = "Each use of the card reduces its damage by 2 until the end of battle"
+indicator = ExtResource( 2 )

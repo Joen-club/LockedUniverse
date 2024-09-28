@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/SimpleEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/BlockState.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemies/EnemySprites/Skelet2.png" type="Texture" id=3]
+
+[node name="Blocker" instance=ExtResource( 1 )]
+health = 200.0
+turns_remain = 3
+turns_capacity = 3
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 1, 1, 1, 1 )
+position = Vector2( -4.16667, 3 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 3 )
+
+[node name="EnemyState" parent="." index="4"]
+script = ExtResource( 2 )
+attack_pattern = [ Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( 0, -1 ), Vector2( -1, 0 ) ]
+value = 0
+
+[editable path="EnemyState"]

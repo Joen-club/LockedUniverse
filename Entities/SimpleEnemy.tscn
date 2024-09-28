@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Entities/SimpleEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemies/EnemyState.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/AttackState.gd" type="Script" id=4]
+[ext_resource path="res://Cards/Effect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemies/NeighbourDetecter.gd" type="Script" id=6]
+[ext_resource path="res://Entities/HealthManager.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 28 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28, 28 )
+
+[node name="SimpleEnemy" type="KinematicBody2D" groups=["Enemies"]]
+script = ExtResource( 2 )
+turns_remain = 2
+turns_capacity = 2
+enemy_state_path = NodePath("EnemyState")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 32, 32 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.913725, 0.0823529, 0.0823529, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+offset = Vector2( 64, 64 )
+
+[node name="DebuffContainer" type="GridContainer" parent="."]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 12.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.9, 0.9 )
+
+[node name="HealthManager" type="Control" parent="."]
+margin_right = 64.0
+margin_bottom = 12.0
+script = ExtResource( 7 )
+
+[node name="HealthBar" type="ProgressBar" parent="HealthManager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2.0
+
+[node name="EnemyState" parent="." groups=["ForExecution"] instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+attack_pattern = [ Vector2( 0, 2 ), Vector2( 0, 1 ), Vector2( 1, 0 ) ]
+value = -20
+preview_toggled = false
+
+[node name="Effect" parent="EnemyState/AdditionalState" index="0" instance=ExtResource( 5 )]
+
+[node name="NeighbourDetecter" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighbourDetecter"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="NeighbourDetecter" to="NeighbourDetecter" method="_on_NeighbourDetecter_body_entered"]
+[connection signal="body_exited" from="NeighbourDetecter" to="NeighbourDetecter" method="_on_NeighbourDetecter_body_exited"]
+[connection signal="input_event" from="NeighbourDetecter" to="EnemyState" method="Mouse_clicked"]
+
+[editable path="EnemyState"]

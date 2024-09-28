@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/Debuffs/Blindness.gd" type="Script" id=1]
+[ext_resource path="res://Effects/Debuffs/BlindnessSprite.png" type="Texture" id=2]
+
+[node name="Blindness" type="Node2D" groups=["Debuff"]]
+script = ExtResource( 1 )
+effect_name = "Blindness"
+description = "You are gay and that's it"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+offset = Vector2( 7, 7 )

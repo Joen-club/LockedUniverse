@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/SimpleEnemy.tscn" type="PackedScene" id=1]
+
+[node name="Bomber" instance=ExtResource( 1 )]
+health = 70.0
+
+[node name="EnemyState" parent="." index="4"]
+attack_pattern = [ Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 1, -1 ), Vector2( 0, -1 ), Vector2( 0, 1 ), Vector2( -1, -1 ), Vector2( -1, 0 ), Vector2( -1, 1 ) ]
+
+[editable path="EnemyState"]
